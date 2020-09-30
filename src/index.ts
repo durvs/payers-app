@@ -1,9 +1,7 @@
-import app from './server/server'
+import app from './app'
 
-import clients from './routes/clients'
+console.log('app started')
 
-app.use('/clients', clients)
-
-app.get('/', function (req, res) {
-  res.send('Hello World!')
+app.listen(3333, () => {
+  console.log('web server started on http://localhost:3333')
 })
