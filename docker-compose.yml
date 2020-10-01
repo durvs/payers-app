@@ -1,0 +1,26 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm run start:dev
+    depends_on:
+      - mongodb
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    volumes:
+     - .:/usr/src/app
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 22017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+volumes:
+    mongodb_data_container:

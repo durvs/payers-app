@@ -19,9 +19,8 @@ class App {
     }
 
     private database (): void {
-      mongoose.connect('mongodb://localhost:27017/desafio-fullstack', {
-        useNewUrlParser: true
-      })
+      const db = 'mongodb://root:rootpassword@mongodb:27017/desafio-fullstack?authSource=admin&w=1'
+      mongoose.connect(db, { useNewUrlParser: true })
     }
 
     private routes (): void {
