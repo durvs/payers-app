@@ -1,10 +1,13 @@
-import { json, Request, Response } from 'express'
+import { Request, Response } from 'express'
 import _ from 'lodash'
 import Payer from '../model/Payer'
 
 class PayerController {
   public async index (req: Request, res: Response): Promise<Response> {
-    const payers = await Payer.find()
+    const payers = await Payer.aggregate([
+      { $match: { value: { $gt: 0 } } },
+      { $group: { _id: '$documentNr', total: { $sum: '$value' }, since: { $first: '$since' }, doc: { $last: '$$ROOT' } } }
+    ])
     return res.json(payers)
   }
 
