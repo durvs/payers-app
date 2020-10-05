@@ -8,13 +8,13 @@ docker build -t desafio-fullstack .
 ## Run
 
 ```sh
-docker run -p 49160:8080 -d desafio-fullstack
+docker run -p 3000:3000 -d desafio-fullstack
 ```
 
-```sh
-docker run -p 49160:8080 desafio-fullstack
-```
 
+## Apis
+
+https://www.getpostman.com/collections/966e45a1a8bb8655c3eb
 
 ## BDD
 
